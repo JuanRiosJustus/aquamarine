@@ -1,0 +1,13 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SimpleGame.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Water.cpp
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(9): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(21): warning C4018: '<': signed/unsigned mismatch
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(26): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(75): warning C4018: '<': signed/unsigned mismatch
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(77): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(86): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\workspaces\visual studio workspace\simplegame\simplegame\water.cpp(103): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  SimpleGame.vcxproj -> C:\Workspaces\Visual Studio Workspace\SimpleGame\Debug\Aquamarine.exe
+  SimpleGame.vcxproj -> C:\Workspaces\Visual Studio Workspace\SimpleGame\Debug\Aquamarine.pdb (Partial PDB)

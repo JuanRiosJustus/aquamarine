@@ -4,6 +4,8 @@
 #include <ctime>
 #include <cstdlib>
 #include "Water.h"
+#include "Bubbles.h"
+#include "Animal.h"
 
 int main()
 {
@@ -15,7 +17,7 @@ int main()
 
 	sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2.0f) - 755.0f, (sf::VideoMode::getDesktopMode().height / 2.0f) - 390.0f);
 
-	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "SFML GAME", sf::Style::Close);
+	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "charcoal", sf::Style::Close);
 	window.setPosition(centerWindow);
 	window.setFramerateLimit(60.0f);
 
@@ -29,6 +31,11 @@ int main()
 
 	// the player
 	Water water;
+
+	//the bubbles
+	Bubbles bubbleSpawner;
+
+	Animal animal;
 
 	/* MAIN WINDOW LOOP */
 	while (window.isOpen())
@@ -84,19 +91,28 @@ int main()
 			std::cout << "Going down with: " << sf::Keyboard::S << std::endl;
 			char down = 's';
 			//mainPlayer.movePlayer(down);
-			//water.animateWater();
 		}
 		if (sf::Event::MouseButtonPressed)
 		{
-			//std::cout << "Current mouse location: " << sf::Mouse::getPosition(window).x << "," << sf::Mouse::getPosition(window).y << std::endl;
+			std::cout << "Current mouse location: " << sf::Mouse::getPosition(window).x << "," << sf::Mouse::getPosition(window).y << std::endl;
+
+			animal.innateBehavior(sf::Vector2f(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
+
 		}
 		
+		if (true)
+		{
+
+		}
+
 		//std::cout << "Current position: " << mainPlayer.latitude() << "," << mainPlayer.longitude() << std::endl;
 		window.clear();
 		
 		window.draw(background);
-		water.animateWater();
 		water.drawWater(window);
+		bubbleSpawner.generateBubbles(window);
+		animal.drawAnimal(window);
+		
 		window.display();
 		
 	}

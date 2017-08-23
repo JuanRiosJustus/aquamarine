@@ -20,4 +20,5 @@ private:
 	bool up;
 	sf::RectangleShape waterContent;
 	sf::VertexArray waterLine;
+	sf::VertexArray waterLine2;
 };

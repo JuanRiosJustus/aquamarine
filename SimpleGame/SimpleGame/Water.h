@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML\Graphics.hpp>
+#include "ColorScheme.h"
 
 class Water 
 {
@@ -10,9 +11,6 @@ public:
 	void drawWater(sf::RenderWindow &window);
 	void animateWater();
 	int getWaveIndices();
-	//void movePlayer(char direction);
-	//float latitude();
-	//float longitude();
 
 private:
 	int waveIntensity;

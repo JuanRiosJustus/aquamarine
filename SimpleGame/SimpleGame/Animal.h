@@ -9,10 +9,11 @@ public:
 
 	void drawAnimal(sf::RenderWindow &window);
 
-	void innateBehavior(sf::Vector2f vector);
+	void innateBehavior(sf::Vector2f mouse);
+	void clickDetection(sf::Vector2f mouse);
 
 private:
 	sf::CircleShape anema;
-	sf::Vector2f point;
+	sf::Vector2f randomPoints;
 	bool slowStart;
 };

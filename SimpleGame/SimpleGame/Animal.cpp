@@ -20,25 +20,30 @@ void Animal::drawAnimal(sf::RenderWindow &window)
 	window.draw(anema);
 }
 
-void Animal::innateBehavior(sf::Vector2f vector)
+void Animal::innateBehavior(sf::Vector2f mouse)
 {
+	// TODO SWAP RANDOMPOINTS WITH MOUSE OR VICE VERCE
+	randomPoints.x = (rand() % static_cast<int>(1280 + 1));
+	randomPoints.y = (rand() % static_cast<int>(720));
+
+
 
 	// ALTERING THE ANIMALS X SPEED
-	if (anema.getPosition().x < vector.x)
+	if (anema.getPosition().x < randomPoints.x)
 	{
 		anema.setPosition(sf::Vector2f(anema.getPosition().x + 0.4f, anema.getPosition().y));
 	}
-	if (anema.getPosition().x > vector.x)
+	if (anema.getPosition().x > randomPoints.x)
 	{
 		anema.setPosition(sf::Vector2f(anema.getPosition().x - 0.4f, anema.getPosition().y));
 	}
 
 	// ALTERING ANIMALS Y SPEED
-	if (anema.getPosition().y < vector.y)
+	if (anema.getPosition().y < randomPoints.y)
 	{
 		anema.setPosition(sf::Vector2f(anema.getPosition().x, anema.getPosition().y + 0.4f));
 	}
-	if (anema.getPosition().y > vector.y)
+	if (anema.getPosition().y > randomPoints.y)
 	{
 		anema.setPosition(sf::Vector2f(anema.getPosition().x, anema.getPosition().y - 0.4f));
 		
@@ -48,4 +53,8 @@ void Animal::innateBehavior(sf::Vector2f vector)
 			anema.setPosition(sf::Vector2f(anema.getPosition().x, 120));
 		}
 	}
+}
+
+void Animal::clickDetection(sf::Vector2f mouse)
+{
 }

@@ -2,40 +2,53 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <ctime>
+#include <time.h>
 #include <cstdlib>
 #include "Water.h"
 #include "Bubbles.h"
 #include "Animal.h"
+#include "ColorScheme.h"
 
 int main()
 {
+
+	// window dimensions
 	sf::Vector2i screenDimensions(1280, 720);
-	sf::Vector2i blockDimensions(10, 10);
 
 	// Create a window
 	sf::RenderWindow window;
-
 	sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2.0f) - 755.0f, (sf::VideoMode::getDesktopMode().height / 2.0f) - 390.0f);
-
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "charcoal", sf::Style::Close);
 	window.setPosition(centerWindow);
 	window.setFramerateLimit(60.0f);
 
+	// the background
 	sf::Sprite background;
 	sf::Texture backgroundTexture;
 	if (!backgroundTexture.loadFromFile("assets/retro.jpg"))
 	{
 		std::cout << "Error, no image found" << std::endl;
+		background.setColor(ColorScheme::getMidGray());
 	}
-	background.setTexture(backgroundTexture);
+	else {
+		background.setTexture(backgroundTexture);
+	}
+
+	// the time
+	time_t theTime = time(NULL);
+	struct tm *aTime = localtime(&theTime);
 
 	// the player
 	Water water;
 
-	//the bubbles
+	// the bubbles
 	Bubbles bubbleSpawner;
 
+	// the animal
 	Animal animal;
+
+	// the mouse
+	sf::Vector2f mouse;
 
 	/* MAIN WINDOW LOOP */
 	while (window.isOpen())
@@ -61,8 +74,12 @@ int main()
 				}
 				break;
 			}
+		}
 
-			
+		if (true)
+		{
+			mouse.x = sf::Mouse::getPosition(window).x;
+			mouse.y = sf::Mouse::getPosition(window).y;
 		}
 
 	
@@ -92,17 +109,19 @@ int main()
 			char down = 's';
 			//mainPlayer.movePlayer(down);
 		}
-		if (sf::Event::MouseButtonPressed)
+		// UTILITY FUNCTION
+		if (sf::Keyboard::isKeyPressed)
 		{
-			std::cout << "Current mouse location: " << sf::Mouse::getPosition(window).x << "," << sf::Mouse::getPosition(window).y << std::endl;
-
-			animal.innateBehavior(sf::Vector2f(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
+			//std::cout << "Current mouse location: " << sf::Mouse::getPosition(window).x << "," << sf::Mouse::getPosition(window).y << std::endl;
+			std::cout << "The current hour: " << aTime->tm_hour << std::endl;
+			animal.innateBehavior(mouse);
 
 		}
 		
-		if (true)
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-
+			
+			bubbleSpawner.clickDetection(mouse);
 		}
 
 		//std::cout << "Current position: " << mainPlayer.latitude() << "," << mainPlayer.longitude() << std::endl;

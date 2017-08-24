@@ -2,13 +2,14 @@
 
 Water::Water()
 {
+
 	// setting the primitive
 	waterLine.setPrimitiveType(sf::LinesStrip);
 	waterLine2.setPrimitiveType(sf::TrianglesStrip);
 
 	// water to have things put
 	waterContent.setSize(sf::Vector2f(1280.0f, 700.0f));
-	waterContent.setFillColor(sf::Color(150.0f, 150.0f, 150.0f, 255.0f));
+	waterContent.setFillColor(ColorScheme::bodyOfWaterColor());
 	waterContent.setPosition(sf::Vector2f(0.0f, 100.0f));
 
 	// how rigid the wave will be 
@@ -26,8 +27,8 @@ Water::Water()
 		waterLine.append(sf::Vector2f(horizontal_index,vertical_index));
 		waterLine2.append(sf::Vector2f(horizontal_index, vertical_index + 2));
 
-		waterLine2[waveIndices].color = sf::Color(207.0f, 207.0f, 207.0f, 255.0f);
-		waterLine[waveIndices].color = sf::Color(207.0f, 207.0f, 207.0f, 255.0f);
+		waterLine2[waveIndices].color = ColorScheme::getMidWhite();
+		waterLine[waveIndices].color = ColorScheme::getMidWhite();
 
 		// line goes upward
 		if (up == true)
@@ -51,11 +52,6 @@ Water::Water()
 		waveIndices++;
 		//std::cout << "the wave length " << waveLength << std::endl;
 	}
-
-	//player.setOrigin(50.0f, 50.0f);
-	//player.setFillColor(sf::Color::Red);
-	//player.setSize(sf::Vector2f(100.0f, 50.0f));
-	//player.setPosition(300.0f, 300.0f);
 }
 
 Water::~Water()

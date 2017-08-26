@@ -39,3 +39,18 @@ sf::Color ColorScheme::bodyOfWaterColor()
 {
 	return sf::Color(25, 125, 225, 255);
 }
+
+sf::Color ColorScheme::sandColor()
+{
+	return sf::Color(255, 255, 135, 255);
+}
+
+sf::Color ColorScheme::sands(int color)
+{
+	switch (color) {
+	case 1: return sf::Color(255, 185, 135, 255); break;
+	case 2: return sf::Color(190, 190, 80, 255); break;
+	case 3: return sf::Color(215, 215, 100, 255); break;
+	default: return sf::Color(225, 225, 135, 255); break;
+	}
+}

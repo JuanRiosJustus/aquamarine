@@ -20,11 +20,11 @@ void Animal::drawAnimal(sf::RenderWindow &window)
 	window.draw(anema);
 }
 
-void Animal::innateBehavior(sf::Vector2f mouse)
+void Animal::innateBehavior(sf::Vector2f mouse, int waterLevel)
 {
 	// TODO SWAP RANDOMPOINTS WITH MOUSE OR VICE VERCE
-	randomPoints.x = (rand() % static_cast<int>(1280 + 1));
-	randomPoints.y = (rand() % static_cast<int>(720));
+	randomPoints.x = mouse.x;
+	randomPoints.y = mouse.y;
 
 
 
@@ -46,7 +46,7 @@ void Animal::innateBehavior(sf::Vector2f mouse)
 	if (anema.getPosition().y > randomPoints.y)
 	{
 		anema.setPosition(sf::Vector2f(anema.getPosition().x, anema.getPosition().y - 0.4f));
-		
+
 		// make sure they dont go above sea level
 		if (anema.getPosition().y <= 100)
 		{

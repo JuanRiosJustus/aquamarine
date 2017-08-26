@@ -13,8 +13,8 @@ public:
 	Bubbles();
 	~Bubbles();
 
-	void generateBubbles(sf::RenderWindow &window);
-	void animateBubbles(int frequancy);
+	void generateBubbles(sf::RenderWindow &window, int waterLevel);
+	void animateBubbles(int frequancy, int waterLevel);
 	void clickDetection(sf::Vector2f mouse);
 
 private:

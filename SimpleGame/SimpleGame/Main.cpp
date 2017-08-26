@@ -1,4 +1,3 @@
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <ctime>
@@ -8,6 +7,7 @@
 #include "Bubbles.h"
 #include "Animal.h"
 #include "ColorScheme.h"
+#include "Utility.h"
 
 int main()
 {
@@ -33,6 +33,7 @@ int main()
 	else {
 		background.setTexture(backgroundTexture);
 	}
+	
 
 	// the time
 	time_t theTime = time(NULL);
@@ -62,7 +63,7 @@ int main()
 		/* MAIN EVENT LOOP*/
 		while (window.pollEvent(eventHandler))
 		{
-			switch (eventHandler.type) 
+			switch (eventHandler.type)
 			{
 			case sf::Event::Closed:
 				window.close();
@@ -82,58 +83,52 @@ int main()
 			mouse.y = sf::Mouse::getPosition(window).y;
 		}
 
-	
-
 		/* MAIN CONTROL FUNCTIONALITY */
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		{
 			std::cout << "Going left with: " << sf::Keyboard::A << std::endl;
 			char left = 'a';
-			//mainPlayer.movePlayer(left);
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
 			std::cout << "Going right with: " << sf::Keyboard::D << std::endl;
 			char right = 'd';
-			//mainPlayer.movePlayer(right);
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		{
 			std::cout << "Going up with: " << sf::Keyboard::W << std::endl;
 			char up = 'w';
-			//mainPlayer.movePlayer(up);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		{
 			std::cout << "Going down with: " << sf::Keyboard::S << std::endl;
 			char down = 's';
-			//mainPlayer.movePlayer(down);
 		}
-		// UTILITY FUNCTION
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			std::cout << "Mouse left button pressed " << std::endl;
+			bubbleSpawner.clickDetection(mouse);
+		}
+		// UTILITY
 		if (sf::Keyboard::isKeyPressed)
 		{
 			//std::cout << "Current mouse location: " << sf::Mouse::getPosition(window).x << "," << sf::Mouse::getPosition(window).y << std::endl;
 			std::cout << "The current hour: " << aTime->tm_hour << std::endl;
-			animal.innateBehavior(mouse);
+			water.setWaterLevel(Utility::respectiveWaterLevel(aTime->tm_hour));
+			animal.innateBehavior(mouse, water.getWaterLevel());
 
 		}
-		
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			
-			bubbleSpawner.clickDetection(mouse);
-		}
-
 		//std::cout << "Current position: " << mainPlayer.latitude() << "," << mainPlayer.longitude() << std::endl;
 		window.clear();
-		
+
 		window.draw(background);
+		
 		water.drawWater(window);
-		bubbleSpawner.generateBubbles(window);
+		bubbleSpawner.generateBubbles(window, water.getWaterLevel());
 		animal.drawAnimal(window);
-		
+
 		window.display();
-		
+
 	}
 	/* END OF MAIN WINDOW */
 

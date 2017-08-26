@@ -9,7 +9,7 @@ public:
 
 	void drawAnimal(sf::RenderWindow &window);
 
-	void innateBehavior(sf::Vector2f mouse);
+	void innateBehavior(sf::Vector2f mouse, int waterLevel);
 	void clickDetection(sf::Vector2f mouse);
 
 private:

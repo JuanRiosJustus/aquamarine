@@ -4,7 +4,7 @@ Bubbles::Bubbles()
 {
 	frequancy = 1000;
 	srand((unsigned)time(NULL));
-	
+
 	for (int index = 0; index < amountOfBubbles; index++)
 	{
 		bubbles[index].setRadius((rand() % static_cast<int>(20 + 1)));
@@ -20,18 +20,20 @@ Bubbles::~Bubbles()
 {
 }
 
-void Bubbles::generateBubbles(sf::RenderWindow &window)
+void Bubbles::generateBubbles(sf::RenderWindow &window, int waterLevel)
 {
-	animateBubbles(frequancy);
+	animateBubbles(frequancy, waterLevel);
 	for (int index = 0; index < amountOfBubbles; index++)
 	{
-		
+
 		window.draw(bubbles[index]);
 	}
 }
 
-void Bubbles::animateBubbles(int frequancy)
+void Bubbles::animateBubbles(int frequancy, int waterLevel)
 {
+
+	// waterlevel for bubble height
 
 	// higher the frequancy - more spread out the bubbles
 
@@ -43,7 +45,7 @@ void Bubbles::animateBubbles(int frequancy)
 		bubbleHeight = bubbleHeight - (((float)rand() / (float)RAND_MAX) * 2);
 
 		// when the bubble reaches its max height
-		if (bubbleHeight <= 120)
+		if (bubbleHeight <= waterLevel + 20)
 		{
 			// bring bubble to randomized height
 			bubbleHeight = ((rand() % static_cast<int>(frequancy) + 720));
@@ -58,12 +60,11 @@ void Bubbles::animateBubbles(int frequancy)
 	}
 }
 
-//TODO
+
 void Bubbles::clickDetection(sf::Vector2f mouse)
 {
 	sf::Vector2f box;
 	float bubbleRadius;
-	
 
 	for (int index = 0; index < amountOfBubbles; index++)
 	{
@@ -75,7 +76,7 @@ void Bubbles::clickDetection(sf::Vector2f mouse)
 		if (mouse.x >= box.x - bubbleRadius && mouse.x <= box.x + bubbleRadius && mouse.y >= box.y - bubbleRadius && mouse.y <= box.y + bubbleRadius)
 		{
 			// utility check
-			std::cout << "bubble clicked " <<std::endl;
+			std::cout << "bubble clicked " << std::endl;
 
 			// adjuest bubbles horizontal spawn location
 			bubbles[index].setPosition(sf::Vector2f((rand() % static_cast<int>(1280 + 1)), ((rand() % static_cast<int>(1000) + 720))));

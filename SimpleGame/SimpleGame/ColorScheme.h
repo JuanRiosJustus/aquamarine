@@ -15,5 +15,6 @@ public:
 	static sf::Color bodyOfWaterColor();
 	static sf::Color sandColor();
 	static sf::Color sands(int color);
+
 private:
 };

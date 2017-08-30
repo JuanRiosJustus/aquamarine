@@ -60,15 +60,21 @@ Water::~Water()
 {
 }
 
-void Water::drawWater(sf::RenderWindow &window)
+void Water::drawWater(sf::RenderWindow &window, sf::Vector2f mouse)
 {
+	//bubbleSpawner.generateBubbles(window, getWaterLevel());
+
 	animateWater();
 	
+	window.draw(waterColor);
+	
+	animals.innateBehavior(mouse, waterLevel);
+	animals.drawAnimal(window);
+
+	ground.drawGround(window);
 	window.draw(waterContent);
 	window.draw(waterLine);
 	window.draw(waterLine2);
-	window.draw(waterColor);
-	ground.drawGround(window);
 	//ground.drawGround(window);
 	
 }

@@ -8,9 +8,9 @@ Ground::Ground()
 	sandContent.setOutlineThickness(2);
 	sandContent.setSize(sf::Vector2f(1280, 250));
 
-	for (unsigned int dot = 0; dot < sandAmount; dot++)
+	for (int dot = 0; dot < sandAmount; dot++)
 	{
-		sands[dot].setRadius((rand() % static_cast<int>(10 + 1)));
+		sands[dot].setRadius((rand() % static_cast<int>(3 + 1)));
 		sands[dot].setFillColor(ColorScheme::sands((rand() % static_cast<int>(3))));
 		sands[dot].setOutlineColor(sf::Color(207, 207, 207, 255));
 		sands[dot].setOutlineThickness(1);

@@ -14,8 +14,8 @@ public:
 	void drawGround(sf::RenderWindow &window);
 
 private:
-	int sandAmount = 100;
-	sf::CircleShape sands[100];
+	int sandAmount = 200;
+	sf::CircleShape sands[200];
 
 	sf::RectangleShape sandContent;
 	sf::VertexArray sandColor;

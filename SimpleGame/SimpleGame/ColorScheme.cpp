@@ -32,12 +32,12 @@ sf::Color ColorScheme::getMidWhite()
 
 sf::Color ColorScheme::bubbleColor()
 {
-	return sf::Color(25, 125, 225, 150);
+	return sf::Color(25, 125, 225, 130);
 }
 
 sf::Color ColorScheme::bodyOfWaterColor()
 {
-	return sf::Color(25, 125, 225, 255);
+	return sf::Color(25, 125, 225, 155);
 }
 
 sf::Color ColorScheme::sandColor()

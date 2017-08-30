@@ -32,3 +32,13 @@ int Utility::respectiveWaterLevel(int hour)
 	}
 	return waterHeight;
 }
+
+int Utility::screenLength()
+{
+	return 1280;
+}
+
+int Utility::screenHeight()
+{
+	return 720;
+}

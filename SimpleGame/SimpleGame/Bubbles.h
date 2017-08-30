@@ -16,7 +16,7 @@ public:
 	void generateBubbles(sf::RenderWindow &window, int waterLevel);
 	void animateBubbles(int frequancy, int waterLevel);
 	void clickDetection(sf::Vector2f mouse);
-
+	sf::CircleShape getBubbles(int index);
 private:
 	int amountOfBubbles = 20;
 	int frequancy;

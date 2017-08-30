@@ -11,21 +11,20 @@
 
 int main()
 {
-
 	// window dimensions
-	sf::Vector2i screenDimensions(1280, 720);
+	sf::Vector2i screenDimensions(Utility::screenLength(), Utility::screenHeight());
 
 	// Create a window
 	sf::RenderWindow window;
 	sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2.0f) - 755.0f, (sf::VideoMode::getDesktopMode().height / 2.0f) - 390.0f);
-	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "charcoal", sf::Style::Close);
+	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "aquamarine", sf::Style::Close);
 	window.setPosition(centerWindow);
-	window.setFramerateLimit(60.0f);
+	window.setFramerateLimit(60);
 
 	// the background
 	sf::Sprite background;
 	sf::Texture backgroundTexture;
-	if (!backgroundTexture.loadFromFile("assets/retro.jpg"))
+	if (!backgroundTexture.loadFromFile("assets/noground.jpg"))
 	{
 		std::cout << "Error, no image found" << std::endl;
 		background.setColor(ColorScheme::getMidGray());
@@ -33,7 +32,6 @@ int main()
 	else {
 		background.setTexture(backgroundTexture);
 	}
-	
 
 	// the time
 	time_t theTime = time(NULL);
@@ -46,10 +44,13 @@ int main()
 	Bubbles bubbleSpawner;
 
 	// the animal
-	Animal animal;
+	//Animal animals;
 
 	// the mouse
 	sf::Vector2f mouse;
+
+	// others
+	srand(time(0));
 
 	/* MAIN WINDOW LOOP */
 	while (window.isOpen())
@@ -115,17 +116,18 @@ int main()
 			//std::cout << "Current mouse location: " << sf::Mouse::getPosition(window).x << "," << sf::Mouse::getPosition(window).y << std::endl;
 			std::cout << "The current hour: " << aTime->tm_hour << std::endl;
 			water.setWaterLevel(Utility::respectiveWaterLevel(aTime->tm_hour));
-			animal.innateBehavior(mouse, water.getWaterLevel());
+			//animals.innateBehavior(mouse, water.getWaterLevel());
 
 		}
 		//std::cout << "Current position: " << mainPlayer.latitude() << "," << mainPlayer.longitude() << std::endl;
+		
 		window.clear();
 
 		window.draw(background);
-		
-		water.drawWater(window);
+		water.drawWater(window, mouse);
 		bubbleSpawner.generateBubbles(window, water.getWaterLevel());
-		animal.drawAnimal(window);
+		//animals.drawAnimal(window);
+		
 
 		window.display();
 
@@ -134,3 +136,4 @@ int main()
 
 	return 0;
 }
+

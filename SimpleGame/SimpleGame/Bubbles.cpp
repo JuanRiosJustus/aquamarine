@@ -1,4 +1,5 @@
 #include "Bubbles.h"
+#include "math.h"
 
 Bubbles::Bubbles()
 {
@@ -7,9 +8,9 @@ Bubbles::Bubbles()
 
 	for (int index = 0; index < amountOfBubbles; index++)
 	{
-		bubbles[index].setRadius((rand() % static_cast<int>(20 + 1)));
+		bubbles[index].setRadius((rand() % static_cast<int>(15 + 1)));
 		bubbles[index].setFillColor(ColorScheme::bubbleColor());
-		bubbles[index].setOutlineColor(sf::Color(207, 207, 207, 255));
+		bubbles[index].setOutlineColor(sf::Color(207, 207, 207, 130));
 		bubbles[index].setOutlineThickness(2);
 		bubbles[index].setOrigin(bubbles[index].getRadius(), bubbles[index].getRadius());
 		bubbles[index].setPosition(sf::Vector2f((rand() % static_cast<int>(1280 + 1)), 720));
@@ -86,4 +87,9 @@ void Bubbles::clickDetection(sf::Vector2f mouse)
 		}
 	}
 	done:;
+}
+
+sf::CircleShape Bubbles::getBubbles(int index)
+{
+	return bubbles[index];
 }

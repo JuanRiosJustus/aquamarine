@@ -44,19 +44,21 @@ void Animal::innateBehavior(sf::Vector2f mouse, int waterLevel)
 		anema[index].setPosition(sf::Vector2f(anema[index].getPosition().x + 1, anema[index].getPosition().y));
 
 
+
+		// Things to do before the ed fothe screen
+		if (anema[index].getPosition().x > 0 && anema[index].getPosition().x < 1280) {
+
+		}
+
+
 		if (anema[index].getPosition().x >= 1280)
 		{
 			// make sure doesnt go below sand bar
-			anema[index].setPosition(sf::Vector2f(-1000 - (rand() % static_cast<int>(-400) - 800), (rand() % static_cast<int>(720)) + 200));
+			anema[index].setPosition(sf::Vector2f(-1000 - (rand() % static_cast<int>(-800) - 400), (rand() % static_cast<int>(720)) + 200));
 		
 			checkLegalState(anema[index], waterLevel);
 		}
 	}
-
-
-	
-
-	
 }
 
 void Animal::clickDetection(sf::Vector2f mouse)

@@ -5,6 +5,7 @@
 #include "Ground.h"
 #include "Bubbles.h"
 #include "Animal.h"
+#include "Bubbles.h"
 
 class Water
 {
@@ -24,6 +25,7 @@ private:
 	int waveIndices;
 	bool up;
 	int waterLevel;
+	Bubbles bubbles;
 	Ground ground;
 	sf::RectangleShape waterContent;
 	sf::VertexArray waterColor;

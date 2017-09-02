@@ -43,9 +43,6 @@ int main()
 	// the bubbles
 	Bubbles bubbleSpawner;
 
-	// the animal
-	//Animal animals;
-
 	// the mouse
 	sf::Vector2f mouse;
 
@@ -57,8 +54,6 @@ int main()
 	{
 
 		sf::Event eventHandler;
-
-
 
 
 		/* MAIN EVENT LOOP*/
@@ -78,11 +73,8 @@ int main()
 			}
 		}
 
-		if (true)
-		{
-			mouse.x = sf::Mouse::getPosition(window).x;
-			mouse.y = sf::Mouse::getPosition(window).y;
-		}
+		mouse.x = sf::Mouse::getPosition(window).x;
+		mouse.y = sf::Mouse::getPosition(window).y;
 
 		/* MAIN CONTROL FUNCTIONALITY */
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -113,22 +105,16 @@ int main()
 		// UTILITY
 		if (sf::Keyboard::isKeyPressed)
 		{
-			//std::cout << "Current mouse location: " << sf::Mouse::getPosition(window).x << "," << sf::Mouse::getPosition(window).y << std::endl;
 			std::cout << "The current hour: " << aTime->tm_hour << std::endl;
 			water.setWaterLevel(Utility::respectiveWaterLevel(aTime->tm_hour));
-			//animals.innateBehavior(mouse, water.getWaterLevel());
 
 		}
-		//std::cout << "Current position: " << mainPlayer.latitude() << "," << mainPlayer.longitude() << std::endl;
 		
 		window.clear();
 
 		window.draw(background);
 		water.drawWater(window, mouse);
-		bubbleSpawner.generateBubbles(window, water.getWaterLevel());
-		//animals.drawAnimal(window);
 		
-
 		window.display();
 
 	}

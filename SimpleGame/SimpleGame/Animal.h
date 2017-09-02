@@ -20,8 +20,8 @@ public:
 
 private:
 	bool soulSearching;
-	int fishAmount = 3;
-	sf::CircleShape anema[3];
+	int fishAmount = 1;
+	sf::CircleShape anema[1];
 	sf::Vector2f randomPoints;
 	bool slowStart;
 };

@@ -12,19 +12,23 @@ class Water
 public:
 	Water();
 	~Water();
-
+	/* Draws the water and every object under waterline repective of waterLevel */
 	void drawWater(sf::RenderWindow &window, sf::Vector2f mouse);
+	/* Animates waves */
 	void animateWater();
+
+	// Accessors
 	int getWaveIndices();
 	int getWaterLevel();
 	void setWaterLevel(int level);
 
 private:
-	Animal animals;
 	int waveIntensity;
 	int waveIndices;
 	bool up;
 	int waterLevel;
+
+	Animal animals;
 	Bubbles bubbles;
 	Ground ground;
 	sf::RectangleShape waterContent;
